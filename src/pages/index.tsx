@@ -1,26 +1,26 @@
-import { useState } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
-import Logo from '../assets/avatar.png'
-import Animal from '../assets/animal.svg'
+import { Banner } from '../components/Banner'
+import { Footer } from '../components/Footer'
+import { Header } from '../components/Header'
+import { Projects } from '../components/Projects'
+import { Team } from '../components/Team'
 import * as S from '../styles/pages/home'
 
 const Home: React.FC = () => {
-  const [teste] = useState('Setup do Projeto')
   return (
     <S.Container>
       <Head>
-        <title>Página Home</title>
+        <title>Home | Donations</title>
       </Head>
+      <Header />
+      <Banner />
       <S.Content>
-        <Image src={Logo} alt="teste" width={200} height={200} />
-        <h1>{teste}</h1>
-        <S.WrapperSvg>
-          <Animal />
-        </S.WrapperSvg>
-
-        <p>Estrutura inicial com Next JS 10</p>
+        <Projects />
       </S.Content>
+      <S.Content>
+        <Team />
+      </S.Content>
+      <Footer />
     </S.Container>
   )
 }

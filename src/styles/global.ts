@@ -7,9 +7,39 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  @media(max-width: 1366px){
+    html {
+      font-size: 76.75%;
+    }
+  }
+
+  @media(max-width: 1080px){
+    html {
+      font-size: 70.75%;
+    }
+  }
+
+  @media(max-width: 720px){
+    html {
+      font-size: 65.5%;
+    }
+  }
+
   body {
     background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
-    font: 400 16px Roboto, sans-serif;
   }
+
+  body, input, textarea, select, button  {
+    font: 400 1rem 'Montserrat', sans-serif;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+
 `

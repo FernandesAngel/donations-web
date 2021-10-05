@@ -1,8 +1,12 @@
 const theme = {
   colors: {
-    background: '#121214',
-    text: '#e1e1e6',
-    primary: '#8257e6'
+    background: '#f2f2f2',
+    secondBackground: '#E4DBF3',
+    secondary: '#6C63FF',
+    textPrimary: '#121214',
+    textSecondary: '#5C40B6',
+    textTertiary: '#FFFFFF',
+    textQuartenary: '#3F3D56'
   }
 }
 
