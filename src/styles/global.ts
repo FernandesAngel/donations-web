@@ -42,4 +42,8 @@ export default createGlobalStyle`
     text-decoration: none;
   }
 
+  .black-background {
+    background-color: #6840dc;
+  }
+
 `

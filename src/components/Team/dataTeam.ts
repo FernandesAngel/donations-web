@@ -10,7 +10,7 @@ export const dataTeam = [
     avatar: '/pessoa2.jpeg'
   },
   {
-    id: 1,
+    id: 3,
     name: 'Rebeca Andrade',
     avatar: '/pessoa3.jpeg'
   }

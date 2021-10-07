@@ -1,16 +1,43 @@
 import * as S from './styles'
 import Image from 'next/image'
 import Button from '../Button'
-export function ProjectCard(): JSX.Element {
+import { useCallback } from 'react'
+import Router from 'next/router'
+
+interface ProjectCardProps {
+  imageUrl: string
+  name: string
+  slug: string
+}
+export function ProjectCard({
+  imageUrl,
+  name,
+  slug
+}: ProjectCardProps): JSX.Element {
+  const handleLink = useCallback(() => {
+    console.log('botao', slug)
+    Router.push(`projeto/${slug}`)
+  }, [slug])
+
+  console.log('aquizao', imageUrl)
+
   return (
     <S.Container>
-      <S.Image>
-        <Image src="/1.jpeg" width={1200} height={828} />
-      </S.Image>
-      <S.Content>
-        <S.Title>Nosso projeto uuhu ola tudo bem</S.Title>
-        <Button title="Ver Mais" />
-      </S.Content>
+      <S.ContainerCard>
+        <Image
+          loader={() => imageUrl}
+          src={imageUrl || '/noimage.png'}
+          width={1200}
+          height={828}
+          unoptimized
+        />
+        <S.ContainerTitle>
+          <S.Title>{name}</S.Title>
+        </S.ContainerTitle>
+      </S.ContainerCard>
+      <S.ContainerButton>
+        <Button title="Ver Mais" onClick={handleLink} />
+      </S.ContainerButton>
     </S.Container>
   )
 }

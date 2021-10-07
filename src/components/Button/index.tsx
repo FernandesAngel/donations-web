@@ -1,11 +1,11 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react'
 // import { ImSpinner8 } from 'react-icons/im';
-import * as S from './styles';
+import * as S from './styles'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  title: string;
-  load?: boolean;
-  small?: boolean;
+  title: string
+  load?: boolean
+  small?: boolean
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
       {/* {load ? <ImSpinner8 size={20} /> : title} */}
       {title}
     </S.Container>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
