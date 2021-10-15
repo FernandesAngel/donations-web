@@ -4,27 +4,27 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0;
 `
-// export const Content = styled.main`
-//   width: 100%;
-//   max-width: 1080px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-direction: column;
-//   margin: 88px auto;
-// `
 export const Grid = styled.div`
   display: grid;
-  /* grid-template-columns: repeat(2, minmax(0, 1fr)); */
   grid-template-columns: 65% 35%;
   gap: 0;
   width: 100%;
-  max-width: 1080px;
+  max-width: 1060px;
   margin: 88px auto;
   box-shadow: 0 0 10px 2px #d8cbf0;
   border-radius: 6px;
+  @media (max-width: 1080px) {
+    max-width: 720px;
+  }
+  @media (max-width: 720px) {
+    display: flex;
+    flex-direction: column;
+    max-width: 360px;
+  }
+  @media (max-width: 380px) {
+    max-width: 270px;
+  }
 `
 export const ContentLeft = styled.div`
   width: 100%;

@@ -1,13 +1,7 @@
-import {
-  forwardRef,
-  ForwardRefRenderFunction,
-  InputHTMLAttributes
-} from 'react'
+import { forwardRef, ForwardRefRenderFunction } from 'react'
+import { InputProps } from '../CurrencyInput/interface'
 import ErrorMessage from '../ErrorMessage'
 import * as S from './styles'
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  errorMessage?: string
-}
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { errorMessage, ...rest }: InputProps,

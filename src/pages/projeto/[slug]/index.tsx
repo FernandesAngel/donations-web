@@ -6,27 +6,12 @@ import * as S from '../../../styles/pages/project'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { useCallback, useState } from 'react'
-import { IMaskInput } from 'react-imask'
-import { CurrencyInput } from '../../../components/CurrencyInputOld'
-import { tryGetPreviewData } from 'next/dist/server/api-utils'
+import { useCallback } from 'react'
+import { CurrencyInput } from '../../../components/CurrencyInput'
 import { GetServerSideProps } from 'next'
 import { api } from '../../../services/api'
 import { useDonation } from '../../../hooks/donation'
-type DonationFormData = {
-  price: string
-  method: string
-}
-interface ProjectsProps {
-  _id: string
-  name: string
-  description: string
-  imageUrl: string
-  slug: string
-}
-interface Project {
-  project: ProjectsProps
-}
+import { Project } from './interface'
 
 const schemaDonation = yup.object({
   price: yup.string().required('Valor Obrigatório'),
@@ -34,37 +19,30 @@ const schemaDonation = yup.object({
 })
 export default function Project({ project }: Project): JSX.Element {
   const { donate, loading } = useDonation()
-  const [teste, setTeste] = useState('')
   const {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schemaDonation)
   })
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(value)
-  }
-  const currencyMask = (value: string | number): string => {
-    return String(value)
-      .replace(/\D/g, '')
-      .replace(/(\d)/, 'R$ $1')
-      .replace(/(\d)(\d{2})$/, '$1,$2')
-      .replace(/(?=(\d{3})+(\D))\B/g, '.')
-  }
-  const handleCreateDonation = useCallback(data => {
-    const price = data.price
-      .replace('R$ ', '')
-      .replace('.', '')
-      .replace(',', '')
-    console.log(price)
-    console.log('reform', currencyMask(price))
-    donate({ project: project._id, price, method: data.method })
-  }, [])
+
+  const handleCreateDonation = useCallback(
+    async data => {
+      const { method, price } = data
+      const response = await donate({
+        project: project._id,
+        method,
+        price: price
+      })
+      if (response) {
+        reset()
+      }
+    },
+    [reset]
+  )
 
   return (
     <S.Container>
@@ -96,7 +74,7 @@ export default function Project({ project }: Project): JSX.Element {
             errorMessage={errors.method?.message}
           />
           <S.ButtonBox>
-            <Button title="Doar" type="submit" />
+            <Button title="Doar" type="submit" load={loading} />
           </S.ButtonBox>
         </S.ContentRight>
       </S.Grid>

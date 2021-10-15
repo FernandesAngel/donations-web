@@ -17,4 +17,7 @@ export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+  @media (max-width: 720px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 `

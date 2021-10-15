@@ -16,7 +16,6 @@ export interface ProjectData {
   slug: string
 }
 export default function Home({ projects }): JSX.Element {
-  console.log('alo', projects)
   return (
     <S.Container>
       <Head>
@@ -37,7 +36,6 @@ export default function Home({ projects }): JSX.Element {
 
 export const getStaticProps: GetStaticProps = async () => {
   const responseProject = await api.get('projects-public')
-  console.log('resp slug', responseProject.data)
 
   return {
     props: {

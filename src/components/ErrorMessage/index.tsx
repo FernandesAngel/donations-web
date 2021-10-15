@@ -1,8 +1,5 @@
+import { ErrorMessageProps } from './interface'
 import { Container } from './styles'
-
-interface ErrorMessageProps {
-  message?: string | undefined
-}
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => {
   return (

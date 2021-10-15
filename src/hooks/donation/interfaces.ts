@@ -5,6 +5,6 @@ export interface DonationData {
 }
 
 export interface DonationContextData {
-  donate(donation: DonationData): Promise<void>
+  donate(donation: DonationData): Promise<boolean>
   loading: boolean
 }

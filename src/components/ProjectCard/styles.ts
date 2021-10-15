@@ -9,7 +9,6 @@ export const Container = styled.div`
   background-color: ${props => props.theme.colors.textTertiary};
   border-radius: 6px;
   box-shadow: 0 0 10px 2px #d8cbf0;
-  /* padding: 20px; */
 `
 export const ContainerCard = styled.div`
   flex: 1;

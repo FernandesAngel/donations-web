@@ -1,6 +1,5 @@
 import * as S from './styles'
 import Image from 'next/image'
-import Button from '../Button'
 import { CardTeamProps } from './interfaces'
 
 export function TeamCard({ team }: CardTeamProps): JSX.Element {

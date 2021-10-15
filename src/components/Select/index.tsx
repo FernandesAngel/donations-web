@@ -1,13 +1,7 @@
-import {
-  forwardRef,
-  ForwardRefRenderFunction,
-  SelectHTMLAttributes
-} from 'react'
+import { forwardRef, ForwardRefRenderFunction } from 'react'
 import ErrorMessage from '../ErrorMessage'
+import { SelectProps } from './interface'
 import * as S from './styles'
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  errorMessage?: string
-}
 
 const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
   { errorMessage, ...rest }: SelectProps,

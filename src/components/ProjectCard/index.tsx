@@ -3,23 +3,16 @@ import Image from 'next/image'
 import Button from '../Button'
 import { useCallback } from 'react'
 import Router from 'next/router'
+import { ProjectCardProps } from './interface'
 
-interface ProjectCardProps {
-  imageUrl: string
-  name: string
-  slug: string
-}
 export function ProjectCard({
   imageUrl,
   name,
   slug
 }: ProjectCardProps): JSX.Element {
   const handleLink = useCallback(() => {
-    console.log('botao', slug)
     Router.push(`projeto/${slug}`)
   }, [slug])
-
-  console.log('aquizao', imageUrl)
 
   return (
     <S.Container>

@@ -15,10 +15,22 @@ export const DonationProvider: React.FC = ({ children }) => {
   const donate = useCallback(
     async (donation: DonationData) => {
       try {
-        console.log('doacao', donation)
-      } catch (error) {
+        setLoading(true)
+        const price = donation.price
+          .replace('R$ ', '')
+          .replace('.', '')
+          .replace(',', '')
+        await api.post('donations/create', {
+          ...donation,
+          price: Number(price)
+        })
+        setLoading(false)
+        addToast('Obrigado pela sua doação!', 'success')
+        return true
+      } catch (err) {
         addToast('Erro ao realizar doação', 'error')
         setLoading(false)
+        return false
       }
     },
     [addToast]
