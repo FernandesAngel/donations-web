@@ -17,7 +17,7 @@ const schemaDonation = yup.object({
   price: yup.string().required('Valor Obrigatório'),
   method: yup.string().required('Meio de pagamento obrigatório')
 })
-export default function Project({ project }: Project): JSX.Element {
+export default function Projects({ project }: Project): JSX.Element {
   const { donate, loading } = useDonation()
   const {
     register,
